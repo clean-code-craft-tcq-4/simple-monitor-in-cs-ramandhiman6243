@@ -17,7 +17,7 @@ public class BatteryChecker
 
     public static bool temperatureIsOk(float temperature, Action<string> printCallback)
     {
-        if (!IsValueInLimit(temperature, TemperatureLimitMin, TemperatureLimitMax)
+        if (!IsValueInLimit(temperature, TemperatureLimitMin, TemperatureLimitMax))
         {
             printCallback("Temperature is out of range!");
             return false;
