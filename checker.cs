@@ -5,7 +5,7 @@ class Checker
 {
     static bool batteryIsOk(float temperature, float soc, float chargeRate)
     {
-        if (temperatureIsOk(temperature) && !socIsOk(soc) && !chargeRateIsOk(chargeRate))
+        if (temperatureIsOk(temperature) && socIsOk(soc) && chargeRateIsOk(chargeRate))
         {
             return true;
         }
