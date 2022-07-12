@@ -19,11 +19,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <OutputPath>.\</OutputPath>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="BatteryChecker.cs" />
-    <Compile Include="checker.cs" />
-    <Compile Include="Tests.cs" />
-  </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)" />  
   </Target>
