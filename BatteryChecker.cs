@@ -58,8 +58,8 @@ public class BatteryChecker
     {
         if (input > maxLimit)
         {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }
