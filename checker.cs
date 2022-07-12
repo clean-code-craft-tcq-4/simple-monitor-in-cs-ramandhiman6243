@@ -1,6 +1,4 @@
-using System;
-
-class Checker
+﻿class Checker
 {
     static int Main()
     {

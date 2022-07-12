@@ -22,20 +22,32 @@ public class Tests
     public static void PerformTests()
     {
         //test valid values
-        ExpectTrue(BatteryChecker.batteryIsOk(25, 70, 0.7f, Console.WriteLine));
-        ExpectTrue(BatteryChecker.batteryIsOk(0, 20, 0.0f, Console.WriteLine));
-        ExpectTrue(BatteryChecker.batteryIsOk(45, 80, 0.8f, Console.WriteLine));
+        CompositeBatteryParameter compositeParam = new CompositeBatteryParameter(25, 70, 0.7f);
+        ExpectTrue(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
+
+        compositeParam = new CompositeBatteryParameter(0, 20, 0.0f);
+        ExpectTrue(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
+
+        compositeParam = new CompositeBatteryParameter(45, 80, 0.8f);
+        ExpectTrue(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
 
         //test temperature out of range
-        ExpectFalse(BatteryChecker.batteryIsOk(46, 70, 0.0f, Console.WriteLine));
-        ExpectFalse(BatteryChecker.batteryIsOk(-1, 70, 0.0f, Console.WriteLine));
+        compositeParam = new CompositeBatteryParameter(46, 70, 0.0f);
+        ExpectFalse(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
+
+        compositeParam = new CompositeBatteryParameter(-1, 70, 0.0f);
+        ExpectFalse(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
 
         //test soc out of range
-        ExpectFalse(BatteryChecker.batteryIsOk(25, 19, 0.0f, Console.WriteLine));
-        ExpectFalse(BatteryChecker.batteryIsOk(25, 81, 0.0f, Console.WriteLine));
+        compositeParam = new CompositeBatteryParameter(25, 19, 0.0f);
+        ExpectFalse(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
+
+        compositeParam = new CompositeBatteryParameter(25, 81, 0.0f);
+        ExpectFalse(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
 
         //test chargeRate out of range
-        ExpectFalse(BatteryChecker.batteryIsOk(25, 70, 0.81f, Console.WriteLine));
+        compositeParam = new CompositeBatteryParameter(25, 70, 0.81f);
+        ExpectFalse(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
 
         Console.WriteLine("All ok");
     }
