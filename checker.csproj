@@ -29,6 +29,8 @@
     <Compile Include="SocParameter.cs" />
     <Compile Include="TemperatureParameter.cs" />
     <Compile Include="Tests.cs" />
+    <Compile Include="Language.cs" />
+    <Compile Include="Localization.cs" />
   </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)" />  
