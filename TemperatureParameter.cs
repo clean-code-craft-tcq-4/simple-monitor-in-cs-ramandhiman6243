@@ -36,14 +36,24 @@ public class TemperatureParameter : IBatteryParameter
             float earlyWarningLimitMin = limitMin + tolerenceValue;
             float earlyWarningLimitMax = limitMax - tolerenceValue;
 
-            if (MathUtils.IsValueLessThan(value, earlyWarningLimitMin))
-            {
-                printCallback("Warning: Approaching mininum Temperature!");
-            }
-            else if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
-            {
-                printCallback("Warning: Approaching maximum Temperature!");
-            }
+            CheckEarlyWarningMin(value, earlyWarningLimitMin, printCallback);
+            CheckEarlyWarningMax(value, earlyWarningLimitMax, printCallback);
+        }
+    }
+
+    public void CheckEarlyWarningMin(float value, float earlyWarningLimitMin, Action<string> printCallback)
+    {
+        if (MathUtils.IsValueLessThan(value, earlyWarningLimitMin))
+        {
+            printCallback("Warning: Approaching mininum Temperature!");
+        }
+    }
+
+    public void CheckEarlyWarningMax(float value, float earlyWarningLimitMax, Action<string> printCallback)
+    {
+        if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
+        {
+            printCallback("Warning: Approaching maxinum Temperature!");
         }
     }
 }

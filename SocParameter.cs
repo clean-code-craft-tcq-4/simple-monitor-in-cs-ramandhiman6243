@@ -36,14 +36,24 @@ public class SocParameter : IBatteryParameter
             float earlyWarningLimitMin = limitMin + tolerenceValue;
             float earlyWarningLimitMax = limitMax - tolerenceValue;
 
-            if (MathUtils.IsValueLessThan(value, earlyWarningLimitMin))
-            {
-                printCallback("Warning: Approaching mininum State of charge!");
-            }
-            else if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
-            {
-                printCallback("Warning: Approaching maximum State of charge!");
-            }
+            CheckEarlyWarningMin(value, earlyWarningLimitMin, printCallback);
+            CheckEarlyWarningMax(value, earlyWarningLimitMax, printCallback);
+        }
+    }
+
+    public void CheckEarlyWarningMin(float value, float earlyWarningLimitMin, Action<string> printCallback)
+    {
+        if (MathUtils.IsValueLessThan(value, earlyWarningLimitMin))
+        {
+            printCallback("Warning: Approaching mininum State of charge!");
+        }
+    }
+
+    public void CheckEarlyWarningMax(float value, float earlyWarningLimitMax, Action<string> printCallback)
+    {
+        if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
+        {
+            printCallback("Warning: Approaching maxinum State of charge!");
         }
     }
 }
