@@ -49,6 +49,6 @@ public class Tests
         compositeParam = new CompositeBatteryParameter(25, 70, 0.81f);
         ExpectFalse(BatteryChecker.batteryIsOk(compositeParam, Console.WriteLine));
 
-        Console.WriteLine("All ok");
+        Console.WriteLine(Localization.GetInSelectedLanguage(Localization.Phrases.AllOk));
     }
 }

@@ -22,7 +22,7 @@ public class TemperatureParameter : IBatteryParameter
             return true;
         }
 
-        printCallback("Temperature is out of range!");
+        printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.Temperature_OutOfRange));
         return false;
     }
 
@@ -45,7 +45,7 @@ public class TemperatureParameter : IBatteryParameter
     {
         if (MathUtils.IsValueLessThan(value, earlyWarningLimitMin))
         {
-            printCallback("Warning: Approaching mininum Temperature!");
+            printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.Temperature_ApproachingMinimum));
         }
     }
 
@@ -53,7 +53,7 @@ public class TemperatureParameter : IBatteryParameter
     {
         if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
         {
-            printCallback("Warning: Approaching maxinum Temperature!");
+            printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.Temperature_ApproachingMaximum));
         }
     }
 }

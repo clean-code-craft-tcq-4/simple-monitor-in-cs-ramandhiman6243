@@ -22,7 +22,7 @@ public class SocParameter : IBatteryParameter
             return true;
         }
 
-        printCallback("State of Charge is out of range!");
+        printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.Soc_OutOfRange));
         return false;
     }
 
@@ -45,7 +45,7 @@ public class SocParameter : IBatteryParameter
     {
         if (MathUtils.IsValueLessThan(value, earlyWarningLimitMin))
         {
-            printCallback("Warning: Approaching mininum State of charge!");
+            printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.Soc_ApproachingMinimum));
         }
     }
 
@@ -53,7 +53,7 @@ public class SocParameter : IBatteryParameter
     {
         if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
         {
-            printCallback("Warning: Approaching maxinum State of charge!");
+            printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.Soc_ApproachingMaximum));
         }
     }
 }

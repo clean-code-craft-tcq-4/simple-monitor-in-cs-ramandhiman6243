@@ -21,7 +21,7 @@ public class ChargeRateParameter : IBatteryParameter
             return true;
         }
 
-        printCallback("Charge rate is out of range!");
+        printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.ChargeRate_OutOfRange));
         return false;
     }
 
@@ -33,7 +33,7 @@ public class ChargeRateParameter : IBatteryParameter
 
             if (MathUtils.IsValueMoreThan(value, earlyWarningLimitMax))
             {
-                printCallback("Warning: Approaching maximum Charge rate!");
+                printCallback(Localization.GetInSelectedLanguage(Localization.Phrases.ChargeRate_ApproachingMaximum));
             }
         }
     }
