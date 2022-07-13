@@ -60,4 +60,5 @@ Shorten the Semantic distance
 
 ## Extensions
 
-- Added Extension 1: Early Warning
+Added Extensions:
+- Extension 1: Early Warning
