@@ -1,8 +1,36 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <ProjectGuid>{01A49B1E-5100-4313-AE2F-2191788380D5}</ProjectGuid>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <RootNamespace>checker</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>.\</OutputPath>
+   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="BatteryChecker.cs" />
+    <Compile Include="ChargeRateParameter.cs" />
+    <Compile Include="checker.cs" />
+    <Compile Include="CompositeBatteryParameter.cs" />
+    <Compile Include="IBatteryParameter.cs" />
+    <Compile Include="MathUtils.cs" />
+    <Compile Include="SocParameter.cs" />
+    <Compile Include="TemperatureParameter.cs" />
+    <Compile Include="Tests.cs" />
+  </ItemGroup>
+  <Target Name="Build">
+    <Csc Sources="@(Compile)" />  
+  </Target>
 </Project>
