@@ -57,3 +57,7 @@ Shorten the Semantic distance
 - Functional to express relation between input and output
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
+
+## Extensions
+
+- Added Extension 1: Early Warning
