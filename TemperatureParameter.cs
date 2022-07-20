@@ -8,10 +8,19 @@ public class TemperatureParameter : IBatteryParameter
     public bool EarlyWarningEnabled { get; set; } = true;
     public float EarlyWarningTolerencePercentage { get; set; } = 5;
 
+    float earlyWarningLimitMin;
+    float earlyWarningLimitMax;
+
     public TemperatureParameter(bool enableEarlyWarning, float earlyWarningTolerence)
     {
         EarlyWarningEnabled = enableEarlyWarning;
         EarlyWarningTolerencePercentage = earlyWarningTolerence;
+
+        float valueRange = limitMax - limitMin;
+        float tolerenceValue = MathUtils.GetPercentageAmount(valueRange, EarlyWarningTolerencePercentage);
+
+        earlyWarningLimitMin = limitMin + tolerenceValue;
+        earlyWarningLimitMax = limitMax - tolerenceValue;
     }
 
     public bool Validate(float value, Action<string> printCallback)
@@ -30,12 +39,6 @@ public class TemperatureParameter : IBatteryParameter
     {
         if (EarlyWarningEnabled)
         {
-            float valueRange = limitMax - limitMin;
-            float tolerenceValue = MathUtils.GetPercentageAmount(valueRange, EarlyWarningTolerencePercentage);
-
-            float earlyWarningLimitMin = limitMin + tolerenceValue;
-            float earlyWarningLimitMax = limitMax - tolerenceValue;
-
             CheckEarlyWarningMin(value, earlyWarningLimitMin, printCallback);
             CheckEarlyWarningMax(value, earlyWarningLimitMax, printCallback);
         }
